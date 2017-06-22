@@ -1,0 +1,29 @@
+﻿@model ICollection<SpecialMovieViewModel>
+@using Mvc_Client.ViewModels
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Genre</th>
+        <th>Director</th>
+        <th>Rating</th>
+        <th></th>
+    </tr>
+    @foreach (SpecialMovieViewModel movie in Model)
+    {
+        <tr>
+            <td>@movie.Title</td>
+            <td>@movie.Year</td>
+            <td>@movie.Genre</td>
+            <td>@movie.Director</td>
+            @for(var i = 0; i < movie.Rating; i++)
+            {
+                <td><span class="glyphicon glyphicon-star"></span></td>
+            }
+            <td><a asp-controller="Movie" asp-action="Delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+    }
+</table>
+
+<a asp-controller="Movie" asp-action="Add">Add Movie</a>
